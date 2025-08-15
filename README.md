@@ -41,7 +41,7 @@ This GitHub Action sets a repository template repository status using the GitHub
        steps:
          - name: Set Template Repository
            id: set-template-repo
-           uses: la-actions/set-repo-template-status@v1
+           uses: lee-lott-actions/set-repo-template-status@v1
            with:
              repo-name: 'test-repo'
              is-template: true
