@@ -1,0 +1,35 @@
+name: Set Repository To Template Repository
+description: A GitHub Action to set a repository as a template repository using the GitHub API
+author: Louisiana Office of Technology Services
+
+inputs:
+  repo-name:
+    description: 'The name of the new repository to create'
+    required: true
+  is-template:
+    description: 'The template status of the repository ("true" or "false")'
+    required: true
+  owner:
+    description: 'The owner of the repository (user or organization)'
+    required: true
+  token:
+    description: 'GitHub token with repository write access'
+    required: true
+
+outputs:
+  result:
+    description: 'Result of the set template repository operation ("success" or "failure")'
+    value: ${{ steps.action.outputs.result }}
+  error-message:
+    description: 'Error message if the repository template operation fails'
+    value: ${{ steps.action.outputs.error-message }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set Repository As Template Repository
+      id: action
+      run: |
+        source ${{ github.action_path }}/action.sh
+        set_template_repository "${{ inputs.repo-name }}"  "${{ inputs.is-template }}" "${{ inputs.owner }}" "${{ inputs.token }}"
+      shell: bash
