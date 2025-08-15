@@ -1,6 +1,6 @@
 name: Set Repository To Template Repository
 description: A GitHub Action to set a repository as a template repository using the GitHub API
-author: Louisiana Office of Technology Services
+author: Lee Lott
 
 inputs:
   repo-name:
